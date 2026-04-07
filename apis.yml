@@ -1,7 +1,11 @@
 aid: burlington-stores
-url: https://raw.githubusercontent.com/api-evangelist/burlington-stores/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/burlington-stores/refs/heads/main/apis.yml
 modified: '2026-03-21'
 apis: []
 common:
   - type: Website
     url: https://www.burlington-stores.com
+description: >-
+  Explore a wide selection of high-quality, brand-name clothing, home decor, and more
+  at unbeatable prices at Burlington.

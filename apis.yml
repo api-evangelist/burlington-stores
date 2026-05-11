@@ -41,6 +41,10 @@ common:
     url: https://www.burlington.com
   - type: Privacy Policy
     url: https://www.burlington.com/content/privacy-policy
+  - type: Integrations
+    url: https://www.burlington.com/integrations
+integrations:
+  - name: Burlington
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

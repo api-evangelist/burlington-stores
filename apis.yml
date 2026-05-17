@@ -9,7 +9,7 @@ tags:
   - Apparel
   - Home Decor
 type: Index
-x-type: company
+kind: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2026-03-21'
@@ -39,7 +39,7 @@ apis:
 common:
   - type: Website
     url: https://www.burlington.com
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.burlington.com/content/privacy-policy
   - type: Integrations
     url: https://www.burlington.com/integrations

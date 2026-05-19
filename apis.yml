@@ -37,6 +37,8 @@ apis:
       currently documented, but the website provides online shopping and
       store locator capabilities.
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/burlington-stores
   - type: Website
     url: https://www.burlington.com
   - type: PrivacyPolicy

@@ -1,5 +1,7 @@
 aid: burlington-stores
 url: >-
+x-api-posture: no-product-api
+x-api-posture-basis: observed
   https://raw.githubusercontent.com/api-evangelist/burlington-stores/refs/heads/main/apis.yml
 name: Burlington Stores
 tags:

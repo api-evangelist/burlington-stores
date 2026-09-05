@@ -1,18 +1,17 @@
 aid: burlington-stores
-url: >-
-x-api-posture: no-product-api
-x-api-posture-basis: observed
-  https://raw.githubusercontent.com/api-evangelist/burlington-stores/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/burlington-stores/refs/heads/main/apis.yml
 name: Burlington Stores
 tags:
-  - Retail
-  - Company
-  - E-Commerce
-  - Apparel
-  - Home Decor
-  - Fortune 1000
+- Retail
+- Company
+- E-Commerce
+- Apparel
+- Home Decor
+- Fortune 1000
 type: Index
 kind: company
+x-api-posture: no-product-api
+x-api-posture-basis: observed
 deliveryModel:
   model: unknown
   open_source: false
@@ -39,43 +38,116 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/burlington-stores.png
 access: 3rd-Party
 created: '2026-03-21'
-modified: '2026-04-23'
+modified: '2026-09-05'
 position: Consuming
-description: >-
-  Burlington Stores is an American national off-price department store retailer
-  offering brand-name clothing, footwear, accessories, home decor, and more at
-  everyday low prices. Explore a wide selection of high-quality, brand-name
-  clothing, home decor, and more at unbeatable prices at Burlington.
+description: 'Burlington Stores, Inc. (NYSE: BURL) is a US national off-price department store retailer
+  offering brand-name clothing, footwear, accessories, baby products and home decor at everyday low prices
+  across more than 1,200 stores. Burlington operates no public developer program: no OpenAPI, GraphQL,
+  gRPC, SOAP or event contract is served on any host it controls. Its one documented machine-to-machine
+  surface is ASC X12 version 4010 EDI for merchandise vendors and freight carriers, and unusually for
+  a retailer of this size the implementation guides are fully public — seventeen transaction-set PDFs
+  plus a GS1-128 shipping label companion report, readable without a login at burlington.com/vendors/edi.
+  The runtime behind them, the Gateway Vendor Management Suite, is invite-only.'
 apis:
-  - aid: burlington-stores:burlington-stores-website
-    name: Burlington Stores
-    tags:
-      - Retail
-      - E-Commerce
-      - Company
-    humanURL: https://www.burlington.com
-    properties:
-      - url: https://www.burlington.com
-        type: Website
-    description: >-
-      Burlington Stores offers off-price retail with brand-name clothing,
-      footwear, accessories, baby products, and home decor. No public API is
-      currently documented, but the website provides online shopping and
-      store locator capabilities.
-common:
-  - type: DomainSecurity
-    url: security/burlington-stores-domain-security.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/burlington-stores
+- aid: burlington-stores:burlington-stores-website
+  name: Burlington Stores
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/burlington-stores.png
+  tags:
+  - Retail
+  - E-Commerce
+  - Company
+  humanURL: https://www.burlington.com
+  description: 'Burlington''s consumer storefront: shopping, store locator, gift cards, loyalty and credit
+    card servicing. No public API is published behind it. Every /.well-known/ path, /openapi.json and
+    /llms.txt on this host answers HTTP 200 with the site''s Next.js shell titled ''404 Not Found | Burlington''
+    — a soft-404, confirmed against a control path that cannot exist — so no discovery document is served.
+    baseURL is deliberately null: repair-api-bases.py returns ''missing'' and no Burlington source names
+    an API host, so recording the website root here would be a marketing base masquerading as an API host.'
+  properties:
   - type: Website
     url: https://www.burlington.com
-  - type: PrivacyPolicy
-    url: https://www.burlington.com/content/privacy-policy
-  - type: Integrations
-    url: https://www.burlington.com/integrations
+- aid: burlington-stores:burlington-stores-edi
+  name: Burlington Stores EDI
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/burlington-stores.png
+  tags:
+  - EDI
+  - X12
+  - Supply Chain
+  - Retail
+  - B2B
+  humanURL: https://www.burlington.com/vendors/edi
+  description: 'Burlington''s ASC X12 version 4010 EDI trading-partner interface — the company''s only
+    documented machine-to-machine surface. Seventeen implementation guides are published as public PDFs
+    with sample interchanges: 001 control segments, 810 invoice, 824 application advice, 850 purchase
+    order, 852 product activity data, 856 ship notice/manifest, 860 PO change, 997 functional acknowledgment,
+    832 price/sales catalog, 846 inventory availability, 858 shipment information, the 204/210/211/214/990
+    motor carrier sets, and 855 non-merchandise POA, plus a GS1-128 serial shipping container label companion
+    report. Every guide declares ''X12/V4010/<set>'' and ''Version: 4.0 Final'' on page one, authored
+    by Burlington Stores, Inc. The specifications are readable without an account; the runtime is not
+    — interchanges are transacted through the Gateway Vendor Management Suite at edi.coat.com, an invite-only
+    login, with onboarding through vendor.setup@burlington.com. There is no HTTP API, so baseURL is null
+    by fact rather than by gap.'
+  properties:
+  - type: Documentation
+    url: https://www.burlington.com/vendors/edi
+  - type: Conformance
+    url: conformance/burlington-stores-conformance.yml
+  - type: Support
+    url: https://www.burlington.com/vendors/locations-contacts
+common:
+- type: Website
+  url: https://www.burlington.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/burlington-stores
+- type: Support
+  url: https://www.burlington.com/helpcenter/contact-us
+- type: HelpCenter
+  url: https://www.burlington.com/helpcenter
+- type: TermsOfService
+  url: https://www.burlington.com/helpcenter/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.burlington.com/helpcenter/privacy-policy
+- type: Conformance
+  url: conformance/burlington-stores-conformance.yml
+- type: LLMsTxt
+  url: llms/burlington-stores-llms.txt
+- type: DomainSecurity
+  url: security/burlington-stores-domain-security.yml
+- type: Plans
+  url: plans/burlington-stores-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/burlington-stores-rate-limits.yml
 integrations:
-  - name: Burlington
+- name: Burlington
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 specificationVersion: '0.23'
+x-enrichment:
+  date: '2026-09-05'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: Burlington runs no developer program at all — every /.well-known/ path, /openapi.json and /llms.txt
+    on www.burlington.com returns HTTP 200 carrying the site's Next.js shell titled '404 Not Found | Burlington'
+    (a control path that cannot exist returns the same body), and vendors.burlington.com and edi.coat.com
+    return honest 404s for all of them; the only documented machine-to-machine surface is ASC X12 4010
+    EDI, whose seventeen implementation guides ARE public at burlington.com/vendors/edi but which is batch
+    interchange behind an invite-only Gateway login, not an API.
+  evidence:
+  - url: https://www.burlington.com/openapi.json
+    status: 200
+  - url: https://www.burlington.com/zzz-definitely-not-a-page-12345
+    status: 200
+  - url: https://vendors.burlington.com/.well-known/agent-card.json
+    status: 404
+  - url: https://edi.coat.com/openapi.json
+    status: 404
+  - url: https://www.burlington.com/vendors/edi
+    status: 200
+  - url: https://cdn.sanity.io/files/k5c6l842/production/7e549f9134cb3625b47e650ef36dfadca0ca8ce3.pdf
+    status: 200
+  checked: '2026-09-05'

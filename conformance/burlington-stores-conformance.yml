@@ -1,0 +1,203 @@
+generated: '2026-09-05'
+method: searched
+source: https://www.burlington.com/vendors/edi
+provider: Burlington Stores
+providerId: burlington-stores
+specification: API Commons Conformance
+specificationVersion: '0.1'
+description: >-
+  Burlington Stores publishes no REST, GraphQL, gRPC, SOAP or event contract, so none of
+  the usual web-API conformance families (oauth2, oidc, json:api, rfc9457, pagination,
+  idempotency) apply. What it does publish, in the open and without a login, is a complete
+  ASC X12 version 4010 EDI implementation library for its trading partners: seventeen
+  transaction-set implementation guides plus a GS1-128 serial shipping container label
+  companion report, each as a downloadable PDF with an accompanying sample interchange.
+  The domain-standard declaration is inside the contracts themselves — every guide's first
+  page carries the string "X12/V4010/<set>" and "Version: 4.0 Final", authored by
+  Burlington Stores, Inc. — which is the evidence recorded below.
+tags:
+  - EDI
+  - X12
+  - Retail
+  - Supply Chain
+  - GS1
+notes: |
+  The specification library is public; the RUNTIME is not. Interchange is transacted
+  through Burlington's "Gateway" Vendor Management Suite at https://edi.coat.com, which is
+  an invite-only login, and vendor onboarding runs through vendor.setup@burlington.com. So
+  a partner can read the full contract before signing, but cannot exercise it anonymously.
+
+  No security certification, attestation or trust centre (SOC 2, ISO 27001, PCI DSS,
+  HIPAA, FedRAMP) is published on any Burlington host, so no `Compliance` pointer is wired
+  into apis.yml. Absence here is a measurement, not an omission.
+
+conformance:
+  - id: x12
+    name: ASC X12 EDI
+    version: '004010'
+    conforms: true
+    role: implementer
+    evidence: https://www.burlington.com/vendors/edi
+    note: >-
+      Every published implementation guide declares "X12/V4010/<set>" and "Version: 4.0
+      Final" on page one, authored by Burlington Stores, Inc. Verified by extracting text
+      from the 001, 810, 846, 850, 856, 204 and 997 guides.
+
+  - id: gs1-128
+    name: GS1-128 Serial Shipping Container Label (SSCC-18)
+    version: '3.0'
+    conforms: true
+    role: implementer
+    evidence: https://cdn.sanity.io/files/k5c6l842/production/cfa0f13b59c0668c1101af15dcb2e54da95cc9b4.pdf
+    note: >-
+      "GS1-128 SERIAL SHIPPING CONTAINER LABEL Companion Report, Version: 3.0 Final",
+      linked from the EDI page as "Bar Code Label Specification". The vendor portals page
+      states Gateway will "create GS1-128 labels in a PDF format".
+
+  - id: openapi
+    conforms: false
+    evidence: https://www.burlington.com/openapi.json
+    note: >-
+      HTTP 200, but the body is the site's Next.js shell titled "404 Not Found |
+      Burlington" — the same body a nonexistent control path returns. No OpenAPI is
+      published on any Burlington host.
+
+  - id: oauth2
+    conforms: false
+    evidence: https://vendors.burlington.com/.well-known/oauth-authorization-server
+    note: 404. No OAuth authorization-server metadata on any host.
+
+  - id: rfc9457
+    conforms: false
+    evidence: https://www.burlington.com/vendors/edi
+    note: >-
+      Not applicable. Error semantics on this surface are the X12 824 Application Advice
+      and 997 Functional Acknowledgment, not HTTP problem+json.
+
+transaction_sets:
+  - set: '001'
+    name: Control Segments
+    group: control
+    spec: https://cdn.sanity.io/files/k5c6l842/production/e2ebe61f7e5134a00bc4a06eb93c595c6b990ac3.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/87a96c393ac72eabf6206960ff8939bf776e23fe.pdf
+  - set: '810'
+    name: Invoice
+    group: merchandise
+    spec: https://cdn.sanity.io/files/k5c6l842/production/9241e9a8887d7302ff7136d36ac80a3c4a9489fd.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/67d91ecb12964e60ad814acbe9b76987132fe9fa.pdf
+  - set: '824'
+    name: Application Advice
+    group: merchandise
+    spec: https://cdn.sanity.io/files/k5c6l842/production/8300c1afb66f7525cd390de5ea980d7b0d7b2d25.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/8e0afe1c1d31666d42462cfe8f9467156c37083b.pdf
+  - set: '850'
+    name: Purchase Order
+    group: merchandise
+    spec: https://cdn.sanity.io/files/k5c6l842/production/7e549f9134cb3625b47e650ef36dfadca0ca8ce3.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/94a4a853aed91e2cae27bc3b1196af7d9318d31a.pdf
+  - set: '852'
+    name: Product Activity Data
+    group: merchandise
+    spec: https://cdn.sanity.io/files/k5c6l842/production/b33c8e9a87951d94bcf1cff25bd73314b831a5a0.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/8bc6da989b8ae194bb93e64af0768a69d9e11d24.pdf
+  - set: '856'
+    name: Ship Notice / Manifest
+    group: merchandise
+    spec: https://cdn.sanity.io/files/k5c6l842/production/f7210ca2f86e8105faf47cc98fe4d59894e139c4.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/e9e383b762a62630eeedd1104898154dc2332cf5.pdf
+  - set: '860'
+    name: Purchase Order Change
+    group: merchandise
+    spec: https://cdn.sanity.io/files/k5c6l842/production/4c0812d7ea7fd3671af78b75a9ace682fce0e88a.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/fc985974a9854a650c9566eee61c92b197559930.pdf
+  - set: '997'
+    name: Functional Acknowledgment
+    group: merchandise
+    spec: https://cdn.sanity.io/files/k5c6l842/production/b58b92c771196489250d060ed99e152c5f4a5733.pdf
+    sample: null
+  - set: '832'
+    name: Price / Sales Catalog
+    group: direct-to-consumer
+    spec: https://cdn.sanity.io/files/k5c6l842/production/961dcd0a2924a4f9dfe333982bd43d29eedf69db.pdf
+    sample: null
+  - set: '846'
+    name: Inventory Availability
+    group: direct-to-consumer
+    spec: https://cdn.sanity.io/files/k5c6l842/production/85f1f0fd02feb45f87302bd3812736436ea09b0b.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/2b3c41ad7948ed9eee9865f9b8d3636afef02be6.pdf
+  - set: '858'
+    name: Shipment Information
+    group: freight
+    spec: https://cdn.sanity.io/files/k5c6l842/production/11f7dea9fabb71f5cfd86a5e897eac00065c7e5c.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/2441697e9a6b88ef912e457f888a678226b2fc60.pdf
+  - set: '204'
+    name: Motor Carrier Load Tender
+    group: freight
+    spec: https://cdn.sanity.io/files/k5c6l842/production/5790346f4237b37aa94a12103a247641f9c5c374.pdf
+    sample: null
+  - set: '210'
+    name: Motor Carrier Invoice
+    group: freight
+    spec: https://cdn.sanity.io/files/k5c6l842/production/3b824b81cb8a693953b3f129d87fec176d7e7aad.pdf
+    sample: null
+  - set: '211'
+    name: Motor Carrier Bill of Lading
+    group: freight
+    spec: https://cdn.sanity.io/files/k5c6l842/production/0313f2d1e20a290f8ef91f74e4db04722fccb8fb.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/527e103ce629501a72618cc19231a389ed14cfd2.pdf
+  - set: '214'
+    name: Carrier Shipment Status Message
+    group: freight
+    spec: https://cdn.sanity.io/files/k5c6l842/production/d9e9245d1ff6a13c28a5194c67b71fd64ba41a9f.pdf
+    sample: null
+  - set: '990'
+    name: Response to a Load Tender
+    group: freight
+    spec: null
+    sample: null
+    note: Listed on the EDI page, but the PDF/ZIP/Sample cells carry no link.
+  - set: '855'
+    name: Non-Merchandise Purchase Order Acknowledgment
+    group: non-merchandise
+    spec: https://cdn.sanity.io/files/k5c6l842/production/d7a9800f72e9c750581c9c8fe2c8f160bfbc8e8d.pdf
+    sample: https://cdn.sanity.io/files/k5c6l842/production/87d8b7155e43d5f8e9095299d0383d96764e47d8.pdf
+
+supporting_documents:
+  - name: Gateway Manual
+    url: https://cdn.sanity.io/files/k5c6l842/production/086f933e2c18f4c084fb29554ba2bb1721188f80.pdf
+  - name: EDI Agreement (10/15)
+    url: https://cdn.sanity.io/files/k5c6l842/production/082bc63b11146f0e2a6ec3c91653b390498cef7d.pdf
+  - name: EDI Changes 12/22/2014
+    url: https://cdn.sanity.io/files/k5c6l842/production/93991c25197e8653b2ab846905fd076d301b468a.pdf
+  - name: GS1-128 Bar Code Label Specification
+    url: https://cdn.sanity.io/files/k5c6l842/production/cfa0f13b59c0668c1101af15dcb2e54da95cc9b4.pdf
+  - name: Domestic Vendor Manual (May 2026)
+    url: https://cdn.sanity.io/files/k5c6l842/production/3f444b85ab756be18bc8e8123c62bb67fbe2d353.pdf
+  - name: TMS Vendor Operating Manual 2024
+    url: https://cdn.sanity.io/files/k5c6l842/production/04c50569dd28e97ff970330d7ffe4610c44653b8.pdf
+
+x-evidence:
+  fetched: '2026-09-05'
+  probes:
+    - url: https://www.burlington.com/vendors/edi
+      status: 200
+    - url: https://www.burlington.com/vendors/portals
+      status: 200
+    - url: https://www.burlington.com/vendors/vendor-manual
+      status: 200
+    - url: https://cdn.sanity.io/files/k5c6l842/production/7e549f9134cb3625b47e650ef36dfadca0ca8ce3.pdf
+      status: 200
+      note: 850 Purchase Order guide, 49 pages; page one reads "X12/V4010/850".
+    - url: https://cdn.sanity.io/files/k5c6l842/production/f7210ca2f86e8105faf47cc98fe4d59894e139c4.pdf
+      status: 200
+      note: 856 Ship Notice/Manifest guide, 21 pages; "X12/V4010/856".
+    - url: https://cdn.sanity.io/files/k5c6l842/production/cfa0f13b59c0668c1101af15dcb2e54da95cc9b4.pdf
+      status: 200
+      note: GS1-128 SSCC label companion report, Version 3.0 Final.
+    - url: https://edi.coat.com/vms-gateway/index.jsp
+      status: 200
+      note: '"Vendor Management Suite -- Login" — the runtime is gated.'
+maintainers:
+  - FN: API Evangelist
+    url: http://apievangelist.com
+    email: info@apievangelist.com

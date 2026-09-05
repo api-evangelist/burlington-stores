@@ -6,9 +6,9 @@ providerId: burlington-stores
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+method: searched
+modified: '2026-09-05'
+reconciled: true
 tags:
   - Retail
   - E-Commerce
@@ -18,14 +18,23 @@ tags:
 description: Burlington Stores does not publish a public developer API, so no programmatic rate limits
   are documented. This artifact preserves the API Commons Rate Limits structure with empty limits and
   a note explaining the absence of public API throttling policy.
+source: https://www.burlington.com/vendors/edi
 sources:
-  - https://www.burlington.com/
-  - https://corporate.burlington.com/
+  - https://www.burlington.com/vendors/edi
+  - https://www.burlington.com/vendors/portals
+limit_count: 0
 notes: |
-  Burlington Stores does not publish a public, general-purpose developer API or developer pricing.
-  Customer-facing digital surfaces (storefront, store locator, gift cards) are consumer products
-  rather than chargeable APIs. Where APIs exist (e.g. for vendors, EDI, or carrier integrations) they
-  are governed by private B2B contracts and not by a self-service developer plan.
+  Re-checked 2026-09-05. limit_count is 0 and there are no response headers to record, because there
+  is no HTTP API to throttle: no OpenAPI, GraphQL, gRPC or SOAP contract is served on any Burlington
+  host. The one documented integration surface is ASC X12 4010 EDI, transacted as batch interchanges
+  through the Gateway Vendor Management Suite (https://edi.coat.com) rather than as request/response
+  calls, so RateLimit-*/X-RateLimit-*/Retry-After semantics do not apply to it. Burlington's
+  published EDI implementation guides state no interchange frequency cap, window or file-size limit;
+  the seventeen guides were read and none contains a throttling section.
+  A separate, non-API access control does exist and is worth recording: burlington.com's robots.txt
+  disallows AI crawlers by name — ClaudeBot, Claude-Web, anthropic-ai, GPTBot, CCBot, Bytespider,
+  cohere-ai, Applebot and others — with a blanket Disallow: /. That is a consent signal, not a rate
+  limit, and it is captured here so it is not mistaken for one.
 responseCodes: {}
 limits: []
 policies: []

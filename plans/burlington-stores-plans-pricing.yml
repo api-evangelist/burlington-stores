@@ -6,9 +6,9 @@ providerId: burlington-stores
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+method: searched
+modified: '2026-09-05'
+reconciled: true
 tags:
   - Retail
   - E-Commerce
@@ -17,14 +17,24 @@ tags:
 description: Burlington Stores does not publish a public developer API or developer-tier pricing. This
   artifact is a trimmed scaffold preserving the API Commons Plans structure so downstream tooling can
   iterate uniformly across providers without fabricated tiers.
+source: https://www.burlington.com/vendors
 sources:
-  - https://www.burlington.com/
-  - https://corporate.burlington.com/
+  - https://www.burlington.com/vendors
+  - https://www.burlington.com/vendors/edi
+  - https://www.burlington.com/helpcenter
+plan_count: 0
 notes: |
-  Burlington Stores does not publish a public, general-purpose developer API or developer pricing.
-  Customer-facing digital surfaces (storefront, store locator, gift cards) are consumer products
-  rather than chargeable APIs. Where APIs exist (e.g. for vendors, EDI, or carrier integrations) they
-  are governed by private B2B contracts and not by a self-service developer plan.
+  Re-checked 2026-09-05 by searching Burlington's own site rather than restating the 2026-05-04 bulk
+  sweep. plan_count is 0 and the zero is now evidenced: there is no developer portal, no pricing page
+  for any programmatic surface, and no sign-up. The only machine-to-machine surface Burlington
+  documents is ASC X12 4010 EDI for merchandise vendors and freight carriers
+  (https://www.burlington.com/vendors/edi, HTTP 200). Access to it is granted by Vendor Relations
+  under a bilateral trading-partner agreement — the published "10/15 EDI Agreement" PDF — and carries
+  no published tiers, quotas, overage or list price. Gateway, Burlington's free web-based EDI
+  solution at https://edi.coat.com, is described as free to vendors but is an invite-only login, so
+  there is no priced plan to record for it either.
+  The prior note that corporate.burlington.com was consulted was wrong: that host does not resolve
+  (DNS NXDOMAIN, checked 2026-09-05). Investor material is at https://www.burlingtoninvestors.com/.
 plans: []
 maintainers:
   - FN: API Evangelist

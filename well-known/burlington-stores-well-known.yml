@@ -1,0 +1,158 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live unauthenticated GET probes of the named /.well-known/ path list plus /llms.txt,
+  /openapi.json and /swagger.json on every host this record knows: the registrable
+  domain and www, the vendor portal host, and the EDI Gateway host. No API baseURL and
+  no OpenAPI servers[] host exists for this provider, so there was no third host class
+  to walk.
+provider: Burlington Stores
+providerId: burlington-stores
+description: >-
+  Burlington Stores serves no discovery documents. www.burlington.com answers HTTP 200
+  for every path — including paths that cannot exist — with a ~600KB Next.js shell whose
+  <title> is "404 Not Found | Burlington"; that is a soft-404, not a document, and it is
+  recorded as a miss. vendors.burlington.com and edi.coat.com return honest 404s. No
+  WellKnown or SecurityTxt pointer is emitted, because nothing was served.
+soft_404_control:
+  url: https://www.burlington.com/zzz-definitely-not-a-page-12345
+  status: 200
+  title: 404 Not Found | Burlington
+  note: >-
+    Control probe against a path that cannot exist. It returns 200 with the same shell
+    body as every /.well-known/ probe on this host, which is how each www.burlington.com
+    200 below is classified as a miss.
+hosts:
+  - host: www.burlington.com
+    note: Primary storefront host. SPA catch-all — every 200 below is a soft-404 shell.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        result: soft-404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 200
+        result: soft-404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        result: soft-404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 200
+        result: soft-404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        result: soft-404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 200
+        result: soft-404
+        file: null
+      - path: /.well-known/agent.json
+        status: 200
+        result: soft-404
+        file: null
+      - path: /llms.txt
+        status: 200
+        result: soft-404
+        file: null
+      - path: /openapi.json
+        status: 200
+        result: soft-404
+        file: null
+      - path: /swagger.json
+        status: 200
+        result: soft-404
+        file: null
+  - host: burlington.com
+    note: Apex; serves the identical shell as www (same body byte-length).
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        result: soft-404
+        file: null
+      - path: /openapi.json
+        status: 200
+        result: soft-404
+        file: null
+  - host: vendors.burlington.com
+    note: >-
+      Burlington Vendor Portal (invite-only login). Returns honest 404s, so these are
+      true absences rather than shell responses.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /llms.txt
+        status: 404
+        file: null
+      - path: /openapi.json
+        status: 404
+        file: null
+      - path: /swagger.json
+        status: 404
+        file: null
+  - host: edi.coat.com
+    note: >-
+      Burlington's EDI "Gateway" (Vendor Management Suite) login, on the legacy Burlington
+      Coat Factory domain coat.com, which redirects to burlington.com. WebLogic error
+      pages; honest 404s.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /llms.txt
+        status: 404
+        file: null
+      - path: /openapi.json
+        status: 404
+        file: null
+summary:
+  hosts_probed: 4
+  documents_served: 0
+  agent_card_found: false
+  security_txt_found: false
+  api_catalog_found: false
+  pointer_emitted: false
+  pointer_note: >-
+    No WellKnown and no SecurityTxt pointer is wired into apis.yml. Every probe missed,
+    and a pointer would assert Burlington serves a surface it does not.
+maintainers:
+  - FN: API Evangelist
+    url: http://apievangelist.com
+    email: info@apievangelist.com

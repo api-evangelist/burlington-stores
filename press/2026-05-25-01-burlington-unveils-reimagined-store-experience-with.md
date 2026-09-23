@@ -1,7 +1,9 @@
 ---
 title: Burlington Unveils Reimagined Store Experience with ...
 url: https://www.prnewswire.com/news-releases/burlington-unveils-reimagined-store-experience-with-special-celebrations-across-21-markets-302526701.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Burlington Stores" press release artificial intelligence'
 position: 1
 source: serpapi-google

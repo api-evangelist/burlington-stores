@@ -1,7 +1,9 @@
 ---
 title: 'Earnings call transcript: Burlington Stores beats Q4 2025 ...'
 url: https://www.investing.com/news/transcripts/-93CH-4544612
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Burlington Stores" press release artificial intelligence'
 position: 3
 source: serpapi-google

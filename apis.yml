@@ -50,6 +50,7 @@ description: 'Burlington Stores, Inc. (NYSE: BURL) is a US national off-price de
   The runtime behind them, the Gateway Vendor Management Suite, is invite-only.'
 apis:
 - aid: burlington-stores:burlington-stores-website
+  x-published: false
   name: Burlington Stores
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/burlington-stores.png
   tags:

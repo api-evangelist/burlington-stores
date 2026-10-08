@@ -96,6 +96,8 @@ apis:
   - type: Support
     url: https://www.burlington.com/vendors/locations-contacts
 common:
+- type: FinOps
+  url: finops/burlington-stores-finops.yml
 - type: Website
   url: https://www.burlington.com
 - type: LinkedIn
